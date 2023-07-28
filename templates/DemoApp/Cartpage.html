@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+    <title>Cart page</title>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h3 style="text-align: center;">Cart Page</h3>
+    <form method="post">
+        {% csrf_token %}
+        <label for="selected_item_id">Select Item:</label>
+        <select name="selected_item_id" id="selected_item_id">
+            {% for item in all %}
+            <option value="{{ item.id }}">{{item.name}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" min="1" value="1">
+        <br>
+        <button type="submit">Calculate Price</button>
+    </form>
+<!--{% if  order_data %}-->
+<!--    <table></table>-->
+<!--    <h2>{{order_data.item.name}}</h2>-->
+<!--     <h2>{{order_data.quantity}}</h2>-->
+<!--     <h2>{{order_data.total_amount}}</h2>-->
+<!--    {% endif  %}-->
+    {% if total_amount %}
+    <h2>Total Amount: ${{ total_amount }}</h2>
+    {% endif %}
+
+  <div id="cartItems">
+    <h2>Cart Items:</h2>
+    <ul>
+      {% for item in cart_items %}
+        <li>{{ item.name }} - Quantity: {{ item.quantity }} - {{item.price}} {{item.total_amount}} </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <p>Total Price: ${{ total_price }}</p>
+
+
+<div style="text-align: center;">
+<button class="text-light" style="text-align: center;" ><a href="{% url 'final' %}">Go Final Order</a></button>
+</div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+
+    <title>Login</title>
+<link rel="stylesheet" type="text/css" href="{% static 'authapp/css/style2.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="box">
+<div class="card-custom">
+    <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+<form method="post">
+    <h3 style="text-align: center;">Login </h3>
+    {% csrf_token %}
+        <div class="mb-3">
+        <label for="un" style="text-align: center;"  class="form-label ">Entre Username:</label>
+        <input type="text" id="un" name="un" style="text-align: center;" class="form-control" >
+        </div>
+    <div class="mb-3" >
+        <label for="pw"  class="form-label">Entre Password:</label>
+        <input  type="password" name="pw" id="pw" class="form-control" >
+        </div>
+
+    <div style="margin-right: 40%;">
+ <input   class="btn btn-primary" type="submit" value="login">
+        </div>
+
+    <h8 class="text-warning">Create new account?</h8>
+        <button class="btn btn-critical" class="text-light" style="text-align:left;"><a href="{% url 'register' %}">SignUp</a></button>
+
+
+
+</form>
+</div>
+    </div>
+</div>
+</div>
+{% endblock %}

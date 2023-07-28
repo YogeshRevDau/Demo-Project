@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+    <title>Item</title>
+{% endblock %}
+{% block content %}
+
+<div class="container">
+
+<h3 style="text-align: center;">Home Page</h3>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+
+    </tr>
+  </thead>
+  <tbody>
+   {% for i in item %}
+    <tr>
+
+      <td>{{i.id}}</td>
+      <td>{{i.name}}</td>
+      <td>{{i.price}}</td>
+
+        {% endfor %}
+    </tr>
+
+
+  </tbody>
+</table>
+    </div>
+<div style="text-align: center;">
+<button class="text-light" style="text-align: center;" ><a href="{% url 'cart' %}">Go Cart</a></button>
+</div>
+  {% endblock %}

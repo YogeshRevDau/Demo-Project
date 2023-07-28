@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Style for the box */
+.box {
+  width: 300px;
+  background-color: blue;
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 20px;
+}

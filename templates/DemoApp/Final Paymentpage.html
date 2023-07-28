@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+    <title>Final Payment Page</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h3 style="text-align: center;">Final Order Details</h3>
+  <h5>User Details </h5>
+  <h6>Name:{{user.username}},Email:{{user.email}}</h6>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">Item</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price(individual)</th>
+      <th scope="col">Total Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in order %}
+    <tr>
+
+      <td>{{i.user}}</td>
+      <td>{{i.item}}</td>
+      <td>{{i.quantity}}</td>
+      <td>{{i.price_individual}}</td>
+      <td>{{i.total_amount}}</td>
+
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+</div>
+<button class="text-light" style="text-align: center;" ><a href="{% url 'cart' %}">return Cart</a></button>
+{% endblock %}
